@@ -38,3 +38,8 @@
 .downloadLinks li a {
   margin: 5px;
 }
+
+.instructionsSection img {
+  position: relative;
+  left: 25%;
+}

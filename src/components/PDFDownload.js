@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import style from "./PDFDownload.module.css";
+import timesOfIndiaImg from "../asset/timesOfIndia.jpg";
 
 const downloadContent = [
   {
@@ -17,7 +18,7 @@ const downloadContent = [
         ],
         explanation:
           "Please Scroll down For download today Times of India epaper and Find out Latest month which you want. then next you can choose required date and then click on download now button. after clicking please wait 5 seconds, download will be start automatically.",
-        image: "epaperpublic\timesOfIndia.png",
+        image: timesOfIndiaImg,
       },
       socialMedia: {
         heading: "Join us Also on Social Media",
@@ -109,7 +110,7 @@ const PDFDownload = ({ downloadId }) => {
       <div>
         <h1>{content.heading}</h1>
       </div>
-      <div>
+      <div className={style.instructionsSection}>
         <h2>{content.instructions.heading}</h2>
         <ol>
           {content.instructions.steps.map((step) => (
@@ -118,7 +119,6 @@ const PDFDownload = ({ downloadId }) => {
         </ol>
         <p>{content.instructions.explanation}</p>
         <img src={content.instructions.image}></img>
-        <img src="epaper/public/timesOfIndia.png"></img>
       </div>
       <div>
         <h2>{content.socialMedia.heading}</h2>

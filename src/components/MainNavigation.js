@@ -2,32 +2,46 @@ import { useState, useEffect } from "react";
 import Icons from "../asset/Icons";
 import classes from "./MainNavigation.module.css";
 import { NavLink } from "react-router-dom";
-// import NewsletterSignup from "./NewsletterSignup";
+import { useSpring, animated } from "react-spring";
 
 function MainNavigation(props) {
   const [hide, setHide] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 700;
+  const [showContactUs, setShowContactUs] = useState(false);
 
   useEffect(() => {
-    /* Inside of a "useEffect" hook add an event listener that updates
-       the "width" state variable when the window size changes */
     window.addEventListener("resize", () => setWidth(window.innerWidth));
-
-    /* passing an empty array as the dependencies of the effect will cause this
-       effect to only run when the component mounts, and not each time it updates.
-       We only want the listener to be added once */
   }, []);
 
   const toggleHandler = () => {
     setHide(!hide);
   };
 
+  const showContactUsHandler = () => {
+    setShowContactUs(!showContactUs);
+  };
+  const expandAnimation = useSpring({
+    // marginRight: showContactUs ? "5%" : "0%",
+    opacity: showContactUs ? 1 : 0,
+    transition: "all 0.2s ease",
+  });
+
+  // Animation spring config for collapsing
+  const collapseAnimation = useSpring({
+    width: showContactUs ? "0%" : "100%",
+    opacity: showContactUs ? 0 : 1,
+  });
+
   return (
     <header className={classes.Header}>
       {width < breakpoint && (
         <div className={classes.hamburger}>
-          <span class="material-symbols-outlined" onClick={toggleHandler}>
+          <span
+            class="material-symbols-outlined"
+            onClick={toggleHandler}
+            title="MenuBar"
+          >
             menu
           </span>
         </div>
@@ -35,7 +49,7 @@ function MainNavigation(props) {
 
       <nav
         className={`${classes.Nav} ${
-          width < breakpoint && hide ? classes.hide : ""
+          width < breakpoint && !hide ? classes.hide : ""
         }`}
       >
         <ul className={classes.navbar}>
@@ -45,6 +59,7 @@ function MainNavigation(props) {
               className={({ isActive }) =>
                 isActive ? classes.active : classes.navbar_element
               }
+              title="Home Link"
             >
               Home
             </NavLink>
@@ -55,6 +70,7 @@ function MainNavigation(props) {
               className={({ isActive }) =>
                 isActive ? classes.active : classes.navbar_element
               }
+              title="About us link"
             >
               About us
             </NavLink>
@@ -70,11 +86,50 @@ function MainNavigation(props) {
             </NavLink>
           </li> */}
         </ul>
-        <div className={classes.socialMediaIcons}>
-          <Icons path="https://facebook.com" socialMedia="fa fa-facebook" />
-          <Icons path="https://youtube.com" socialMedia="fa fa-youtube" />
-          <Icons path="https://pinterest.com" socialMedia="fa fa-pinterest" />
-          <Icons path="https://instagram.com" socialMedia="fa fa-instagram" />
+        <div className={classes.links}>
+          {showContactUs && (
+            <animated.div
+              className={classes.socialMediaIcons}
+              style={showContactUs && expandAnimation}
+            >
+              <Icons
+                path="https://facebook.com"
+                socialMedia="fa fa-facebook"
+                title="Facebook link"
+              />
+              <Icons
+                path="https://youtube.com"
+                socialMedia="fa fa-youtube"
+                title="youtube link"
+              />
+              <Icons
+                path="https://pinterest.com"
+                socialMedia="fa fa-pinterest"
+                title="pinterest link"
+              />
+              <Icons
+                path="https://instagram.com"
+                socialMedia="fa fa-instagram"
+                title="Instagram link"
+              />
+            </animated.div>
+          )}
+          <span
+            onClick={showContactUsHandler}
+            // className={showContactUs ? classes.arrowBtn : classes.ContactUsBtn}
+            style={expandAnimation}
+          >
+            {showContactUs ? (
+              <span
+                class="material-symbols-outlined"
+                style={{ cursor: "pointer" }}
+              >
+                arrow_right
+              </span>
+            ) : (
+              <span className={classes.ContactUsBtn}>Contact us</span>
+            )}
+          </span>
         </div>
       </nav>
     </header>

@@ -15,7 +15,12 @@ const PDFTable = () => {
             <tr className={style.rows} key={content.id}>
               <td className={style.rowData}>
                 <p>{content.title}</p>
-                <Link to={`/downloads/${content.id}`}>Download</Link>
+                <Link
+                  to={`/downloads/${content.id}`}
+                  title="News paper download"
+                >
+                  Download
+                </Link>
               </td>
             </tr>
           ))}

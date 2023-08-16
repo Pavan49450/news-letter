@@ -51,6 +51,7 @@
   height: 100%;
   align-items: center;
   justify-content: space-between;
+  align-items: flex-end;
 }
 @media screen and (max-width: 700px) {
   .navbar {
@@ -71,14 +72,13 @@
     width: 100%;
     background-color: #242424;
   }
-  .Nav {
-    display: none;
+
+  .socialMediaIcons {
+    width: 100%;
   }
-}
-.socialMediaIcons {
-  display: flex;
-  height: 100%;
-  align-items: center;
+  .Nav {
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 700px) {
@@ -90,8 +90,8 @@
 }
 
 .hide {
-  display: flex;
-  flex-direction: column;
+  display: none;
+  /* flex-direction: column; */
   align-items: flex-end;
 
   transition: height 0.2s ease-in, width 0.2s ease-in;
@@ -116,4 +116,34 @@
 .hamburger:hover {
   transform: scale(1.1);
   transition: all 0.2s ease-in;
+}
+
+.ContactUsBtn {
+  display: inline-block;
+  margin-right: 1rem;
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.87);
+}
+.arrowBtn {
+  width: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.socialMediaIcons {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.hideSocialMediaIcons {
+  display: none;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  height: 50px;
 }
