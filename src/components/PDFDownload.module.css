@@ -1,0 +1,40 @@
+.downloadTable table,
+.othersTable table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+}
+.downloadContent h1 {
+  border-bottom: 4px solid rgb(68, 162, 185);
+}
+
+.downloadTable table tr td,
+.othersTable table tr td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+.downloadContent {
+  width: 60%;
+  margin: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadContent {
+    width: auto;
+  }
+}
+
+.downloadLinks {
+  padding: 0px;
+}
+.downloadLinks li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.downloadLinks li h3,
+.downloadLinks li a {
+  margin: 5px;
+}

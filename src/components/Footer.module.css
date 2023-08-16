@@ -1,0 +1,37 @@
+.Footer {
+  padding: 10px;
+  background-color: rgb(80, 79, 79);
+  width: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.footerSection {
+  width: 100%;
+}
+.Content p,
+.ContentHead h2 {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
+
+/* @media screen and (max-width: 700px) {
+  .Footer {
+  }
+} */
+
+.links {
+  display: flex;
+}
+.copyrights {
+  background-color: black;
+  width: 100%;
+}
+
+.copyrightsContent {
+  padding: 10px;
+  color: white;
+  text-align: center;
+  margin: 2px;
+}

@@ -1,0 +1,16 @@
+.aboutusSection {
+  border: 1px solid black;
+  padding: 20px;
+  text-align: center;
+  width: 60%;
+}
+
+@media screen and (max-width: 700px) {
+  .aboutusSection {
+    width: auto;
+  }
+}
+
+.ContentHead h1 {
+  border-bottom: 4px solid rgb(68, 162, 185);
+}

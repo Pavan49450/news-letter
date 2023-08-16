@@ -1,0 +1,28 @@
+/* * {
+  padding: 0px;
+  margin: 0px;
+} */
+
+.App {
+  width: 100%;
+  max-width: 1080px;
+  margin: 25px auto;
+}
+
+@media screen and (max-width: 900px) {
+  .App {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 900px) {
+  .App {
+    box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.17);
+    width: 90%;
+  }
+}
+
+/* @media screen and (max-width: 700px) {
+  .App {
+    width: 100%;
+  }
+} */
