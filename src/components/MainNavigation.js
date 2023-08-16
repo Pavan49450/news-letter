@@ -21,17 +21,21 @@ function MainNavigation(props) {
   const showContactUsHandler = () => {
     setShowContactUs(!showContactUs);
   };
-  const expandAnimation = useSpring({
-    // marginRight: showContactUs ? "5%" : "0%",
+  const contactUsExpandAnimation = useSpring({
+    width: showContactUs ? "100%" : "0%",
+    position: "relative",
+    left: showContactUs ? "0%" : "100%",
     opacity: showContactUs ? 1 : 0,
     transition: "all 0.2s ease",
   });
 
-  // Animation spring config for collapsing
-  const collapseAnimation = useSpring({
-    width: showContactUs ? "0%" : "100%",
-    opacity: showContactUs ? 0 : 1,
-  });
+  // const menubarExpandAnimation = useSpring({
+  //   height: hide ? "100%" : "0px",
+  //   // position: "relative",
+  //   // top: hide ? "0%" : "100%",
+  //   // opacity: hide ? 1 : 0,
+  //   transition: "all 0.2s ease",
+  // });
 
   return (
     <header className={classes.Header}>
@@ -47,10 +51,11 @@ function MainNavigation(props) {
         </div>
       )}
 
-      <nav
+      <animated.div
         className={`${classes.Nav} ${
           width < breakpoint && !hide ? classes.hide : ""
         }`}
+        // style={menubarExpandAnimation}
       >
         <ul className={classes.navbar}>
           <li>
@@ -61,7 +66,7 @@ function MainNavigation(props) {
               }
               title="Home Link"
             >
-              Home
+              &nbsp;Home
             </NavLink>
           </li>
           <li>
@@ -72,7 +77,7 @@ function MainNavigation(props) {
               }
               title="About us link"
             >
-              About us
+              &nbsp;About us
             </NavLink>
           </li>
           {/* <li>
@@ -87,37 +92,37 @@ function MainNavigation(props) {
           </li> */}
         </ul>
         <div className={classes.links}>
-          {showContactUs && (
-            <animated.div
-              className={classes.socialMediaIcons}
-              style={showContactUs && expandAnimation}
-            >
-              <Icons
-                path="https://facebook.com"
-                socialMedia="fa fa-facebook"
-                title="Facebook link"
-              />
-              <Icons
-                path="https://youtube.com"
-                socialMedia="fa fa-youtube"
-                title="youtube link"
-              />
-              <Icons
-                path="https://pinterest.com"
-                socialMedia="fa fa-pinterest"
-                title="pinterest link"
-              />
-              <Icons
-                path="https://instagram.com"
-                socialMedia="fa fa-instagram"
-                title="Instagram link"
-              />
-            </animated.div>
-          )}
-          <span
+          <animated.div
+            className={classes.socialMediaIcons}
+            style={{
+              ...contactUsExpandAnimation,
+            }}
+          >
+            <Icons
+              path="https://facebook.com"
+              socialMedia="fa fa-facebook"
+              title="Facebook link"
+            />
+            <Icons
+              path="https://youtube.com"
+              socialMedia="fa fa-youtube"
+              title="youtube link"
+            />
+            <Icons
+              path="https://pinterest.com"
+              socialMedia="fa fa-pinterest"
+              title="pinterest link"
+            />
+            <Icons
+              path="https://instagram.com"
+              socialMedia="fa fa-instagram"
+              title="Instagram link"
+            />
+          </animated.div>
+          <div
             onClick={showContactUsHandler}
             // className={showContactUs ? classes.arrowBtn : classes.ContactUsBtn}
-            style={expandAnimation}
+            style={{ height: "24px" }}
           >
             {showContactUs ? (
               <span
@@ -127,11 +132,13 @@ function MainNavigation(props) {
                 arrow_right
               </span>
             ) : (
-              <span className={classes.ContactUsBtn}>Contact us</span>
+              <span className={classes.ContactUsBtn} title="contact">
+                Contact us
+              </span>
             )}
-          </span>
+          </div>
         </div>
-      </nav>
+      </animated.div>
     </header>
   );
 }
