@@ -7,7 +7,7 @@ import { useSpring, animated } from "react-spring";
 function MainNavigation(props) {
   const [hide, setHide] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 700;
+  const breakpoint = 850;
   const [showContactUs, setShowContactUs] = useState(false);
 
   useEffect(() => {
