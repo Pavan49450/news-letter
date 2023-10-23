@@ -118,7 +118,12 @@ const PDFDownload = ({ downloadId }) => {
           ))}
         </ol>
         <p>{content.instructions.explanation}</p>
-        <img src={content.instructions.image}></img>
+        <div className={style.newsPaperImg}>
+          <img
+            src={content.instructions.image}
+            alt="The Times India News Paper"
+          ></img>
+        </div>
       </div>
       <div>
         <h2>{content.socialMedia.heading}</h2>

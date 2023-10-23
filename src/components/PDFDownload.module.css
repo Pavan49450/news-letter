@@ -20,12 +20,6 @@
   margin: 10px;
 }
 
-@media screen and (max-width: 700px) {
-  .downloadContent {
-    width: auto;
-  }
-}
-
 .downloadLinks {
   padding: 0px;
 }
@@ -39,7 +33,22 @@
   margin: 5px;
 }
 
-.instructionsSection img {
+/* .instructionsSection img {
   position: relative;
   left: 25%;
+} */
+
+.newsPaperImg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadContent {
+    width: auto;
+  }
+  .instructionsSection img {
+    left: 0px;
+  }
 }

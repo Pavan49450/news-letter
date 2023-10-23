@@ -3,12 +3,14 @@ import Icons from "../asset/Icons";
 import classes from "./MainNavigation.module.css";
 import { NavLink } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
+import rightArrow from "../asset/right-arrow.png";
 
 function MainNavigation(props) {
   const [hide, setHide] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 850;
   const [showContactUs, setShowContactUs] = useState(false);
+  const [sleep, setSleep] = useState(true);
 
   useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
@@ -19,6 +21,10 @@ function MainNavigation(props) {
   };
 
   const showContactUsHandler = () => {
+    setSleep(false);
+    setTimeout(() => {
+      setSleep(true);
+    }, [500]);
     setShowContactUs(!showContactUs);
   };
   const contactUsExpandAnimation = useSpring({
@@ -124,18 +130,24 @@ function MainNavigation(props) {
             // className={showContactUs ? classes.arrowBtn : classes.ContactUsBtn}
             style={{ height: "24px" }}
           >
-            {showContactUs ? (
-              <span
-                class="material-symbols-outlined"
-                style={{ cursor: "pointer" }}
-              >
-                arrow_right
-              </span>
-            ) : (
-              <span className={classes.ContactUsBtn} title="contact">
-                Contact us
-              </span>
-            )}
+            {sleep &&
+              (showContactUs ? (
+                // <span
+                //   class="material-symbols-outlined"
+                //   style={{ cursor: "pointer" }}
+                // >
+                //   arrow_right
+                // </span>
+                <img
+                  src={rightArrow}
+                  alt="right-arrow"
+                  className={classes.rightArrow}
+                ></img>
+              ) : (
+                <span className={classes.ContactUsBtn} title="contact">
+                  Contact us
+                </span>
+              ))}
           </div>
         </div>
       </animated.div>
